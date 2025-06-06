@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>NER, POS, Coreference for Arabic Language</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1>NER, POS, Coreference for Arabic Language</h1>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Analyse de Texte NLP</h1>
+        
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="mb-3">
+                    <label for="textInput" class="form-label">Texte à analyser</label>
+                    <textarea class="form-control" id="textInput" rows="6" placeholder="Entrez votre texte ici..."></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Type d'analyse</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="taskRadio" id="nerRadio" value="ner" >
+                        <label class="form-check-label" for="nerRadio">
+                            Reconnaissance d'entités nommées (NER)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="taskRadio" id="posRadio" value="pos">
+                        <label class="form-check-label" for="posRadio">
+                            Analyse morpho-syntaxique (POS)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="taskRadio" id="corefRadio" value="coref">
+                        <label class="form-check-label" for="corefRadio">
+                            Résolution de coréférences
+                        </label>
+                    </div>
+                </div>
+                
+                <button id="analyzeBtn" class="btn btn-primary w-100">Analyser</button>
+                
+                <div id="loader" class="loader"></div>
+                
+                <div id="resultContainer" class="result-container" style="display: none;">
+                    <h3 id="resultTitle">Résultats</h3>
+                    
+                    <div id="nerResult" style="display: none;">
+                        <div id="nerDisplay"></div>
+                        <hr>
+                        <div id="entitiesList"></div>
+                    </div>
+                    
+                    <div id="posResult" style="display: none;">
+                        <div id="posDisplay"></div>
+                    </div>
+                    
+                    <div id="corefResult" style="display: none;">
+                        <h4>Texte avec coréférences:</h4>
+                        <div id="corefDisplay"></div>
+                        <hr>
+                        <h4>Texte résolu:</h4>
+                        <div id="resolvedText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='js/code.js') }}"></script>
+
+</html>
